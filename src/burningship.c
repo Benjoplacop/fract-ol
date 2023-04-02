@@ -1,52 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol_julia.c                                    :+:      :+:    :+:   */
+/*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhennequ <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/22 12:57:35 by bhennequ          #+#    #+#             */
-/*   Updated: 2023/04/02 16:05:06 by bhennequ         ###   ########.fr       */
+/*   Created: 2023/03/30 14:09:47 by bhennequ          #+#    #+#             */
+/*   Updated: 2023/04/02 16:09:32 by bhennequ         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../minilibx-linux/mlx.h"
-#include "../minilibx-linux/mlx_int.h"
 #include "../fractol.h"
-#include <stdio.h>
+#include <math.h>
 
-void	take_preset_julia(t_data *vars, double re, double im)
+void	init_burning_ship(t_data *vars)
 {
-	init_julia(vars);
-	vars->comp.re = re;
-	vars->comp.im = im;
-	vars->ultra_mode = 0;
-	vars->ultra_mode2 = 0;
-}
-
-void	init_julia(t_data *vars)
-{
-	vars->type_fract = 1;
+	vars->type_fract = 3;
 	vars->max_iter = 100;
-	vars->zoom = 315;
-	vars->x_set = -1.6;
-	vars->y_set = -1.6;
-	vars->comp.re = 0.285;
-	vars->comp.im = 0.01;
+	vars->zoom = 300;
+	vars->x_set = -2;
+	vars->y_set = -2;
 }
 
-void	calcul_julia(t_data *data, t_complex z, int x, int y)
+void	calcul_burning_ship(t_data *data, t_complex c, int x, int y)
 {
-	t_complex	tmp;
+	t_complex	z;
 	int			i;
+	t_complex	tmp;
 
+	z.re = 0;
+	z.im = 0;
 	i = 0;
 	while (i < data->max_iter)
 	{
-		tmp.re = z.re * z.re - z.im * z.im;
-		tmp.im = 2 * z.re * z.im;
-		z.re = tmp.re + data->comp.re;
-		z.im = tmp.im + data->comp.im;
+		tmp.re = z.re * z.re - z.im * z.im + c.re;
+		tmp.im = 2 * fabs(z.re * z.im) + c.im;
+		z = tmp;
 		if (z.re * z.re + z.im * z.im > 4)
 			break ;
 		i++;
@@ -57,9 +46,9 @@ void	calcul_julia(t_data *data, t_complex z, int x, int y)
 		color(data, data->color & ~data->mask * i, x, y);
 }
 
-void	render_julia(t_data *data)
+void	render_burning_ship(t_data *data)
 {
-	t_complex	z;
+	t_complex	c;
 	int			x;
 	int			y;
 
@@ -72,9 +61,9 @@ void	render_julia(t_data *data)
 		x = 0;
 		while (x < WIDTH)
 		{
-			z.re = (x / data->zoom + data->x_set);
-			z.im = (y / data->zoom + data->y_set);
-			calcul_julia(data, z, x, y);
+			c.re = (x / data->zoom + data->x_set);
+			c.im = (y / data->zoom + data->y_set);
+			calcul_burning_ship(data, c, x, y);
 			x++;
 		}
 		y++;

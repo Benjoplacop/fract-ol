@@ -6,7 +6,7 @@
 /*   By: bhennequ <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 16:37:17 by bhennequ          #+#    #+#             */
-/*   Updated: 2023/03/31 19:10:55 by bhennequ         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:56:14 by bhennequ         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static t_data	*ft_test_fractal(char **argv, t_data *vars)
 	}
 	else if (!ft_strncmp(argv[1], "Mandelbrot", 10))
 		vars->type_fract = 2;
-	else if (!ft_strncmp(argv[1], "Newton", 6))
+	else if (!ft_strncmp(argv[1], "Burningship", 11))
 		vars->type_fract = 3;
 	else
 		ft_error_put(vars);

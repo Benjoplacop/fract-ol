@@ -6,7 +6,7 @@
 /*   By: bhennequ <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 16:16:47 by bhennequ          #+#    #+#             */
-/*   Updated: 2023/03/31 20:15:27 by bhennequ         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:57:47 by bhennequ         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,12 @@ int	key_utils(int key, t_data *vars)
 		destroy(vars);
 	if (key == 32)
 	{
-		if (vars->type_fract == 2)
+		if (vars->type_fract == 3)
 			init_julia(vars);
 		else if (vars->type_fract == 1 && vars->ultra_mode == 0)
 			init_mandel(vars);
+		else if (vars->type_fract == 2 && vars->ultra_mode == 0)
+			init_burning_ship(vars);
 	}
 	if (vars->type_fract == 1)
 		key_change_julia(key, vars);

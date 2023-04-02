@@ -6,7 +6,7 @@
 /*   By: bhennequ <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 16:37:28 by bhennequ          #+#    #+#             */
-/*   Updated: 2023/03/31 21:50:34 by bhennequ         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:59:06 by bhennequ         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_zoom_fract(t_data *vars)
 		render_julia(vars);
 	else if (vars->type_fract == 2)
 		render_mandelbrot(vars);
-	else
+	else if (vars->type_fract == 3)
 		render_burning_ship(vars);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bhennequ <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 14:36:32 by bhennequ          #+#    #+#             */
-/*   Updated: 2023/03/31 22:02:23 by bhennequ         ###   ########.fr       */
+/*   Updated: 2023/04/02 15:58:27 by bhennequ         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_error_put(t_data *vars)
 	ft_putstr_fd("\033[31mError Arguments\n", 1);
 	ft_putstr_fd("\033[0mArguments available:\n", 1);
 	ft_putstr_fd("\033[34m   -Mandelbrot\n\033[32m   -Julia\n", 1);
-	ft_putstr_fd("\033[35m   -Newton (comming soon)\n", 1);
+	ft_putstr_fd("\033[35m   -Burningship\n", 1);
 	ft_putstr_fd("\033[0m(If you use Julia, give more params like: ", 1);
 	ft_putstr_fd("./fractol Julia 0.285 0.01)\n", 1);
 	free(vars);
